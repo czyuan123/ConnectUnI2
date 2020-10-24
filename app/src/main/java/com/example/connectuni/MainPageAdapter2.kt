@@ -1,0 +1,24 @@
+package com.example.connectuni
+
+
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+
+@Suppress("DEPRECATION")
+class MainPageAdapter2 (fm: FragmentManager): FragmentStatePagerAdapter(fm){
+    override fun getItem(position: Int): Fragment {
+        //which fragment needed according to the menu icon that we select
+        return when(position){
+            0-> {QRfragment2.newInstance()}
+            1-> {ScanHistory.newInstance(ScanHistory.ResultListType.CHECKIN_RESULT)}
+            2-> {ScanHistory.newInstance(ScanHistory.ResultListType.CHECKOUT_RESULT)}
+            else->{ QRfragment1()}
+        }
+    }
+
+    override fun getCount(): Int {
+        //Total 3 fragment so return 3
+        return 3
+    }
+}

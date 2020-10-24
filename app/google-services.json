@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "536077015696",
+    "firebase_url": "https://connectuni-7dea4.firebaseio.com",
+    "project_id": "connectuni-7dea4",
+    "storage_bucket": "connectuni-7dea4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536077015696:android:5bef6598ada0d38a941615",
+        "android_client_info": {
+          "package_name": "com.example.connectuni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536077015696-rki045kthkamp1vepkl6i8sdtrfvjsm2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.connectuni",
+            "certificate_hash": "68e6a20e31bf67816e803b7b9177c648015b75c0"
+          }
+        },
+        {
+          "client_id": "536077015696-8vo4p7p4necvbtjrdpf1ppig4c0img19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi3y7RYx1jcCKJDzdaAhWv1c9P6xgb2SM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536077015696-8vo4p7p4necvbtjrdpf1ppig4c0img19.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/closedialog"
+            android:layout_width="48dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:soundEffectsEnabled="true"
+            android:tint="@color/colourprimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_close_24">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/qrscan"
+            android:layout_width="143dp"
+            android:layout_height="111dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="76dp"
+            android:layout_marginRight="76dp"
+            android:background="@drawable/round_corner"
+            android:tint="#FF5252"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_qr_code">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/scannedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/qrscan"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="@+id/qrscan"
+            app:layout_constraintTop_toBottomOf="@+id/qrscan"
+            tools:text="TextView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/scannedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="10dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_disabled"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/scannedText"
+            app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintStart_toStartOf="@+id/scannedText"
+            app:layout_constraintTop_toBottomOf="@+id/scannedText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

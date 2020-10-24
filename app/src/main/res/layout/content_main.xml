@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/COlourtitle"
+                android:gravity="center|left"
+                android:text=" Connect UnI"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewMainMenu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <ImageButton
+        android:id="@+id/imageBtnProfile"
+        android:layout_width="135dp"
+        android:layout_height="147dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:background="@color/ICON"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageBtnInfo"
+        app:srcCompat="@drawable/icons8_account_64" />
+
+    <ImageButton
+        android:id="@+id/imageBtnInfo"
+        android:layout_width="140dp"
+        android:layout_height="141dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="124dp"
+        android:background="@color/ICON"
+        app:layout_constraintStart_toEndOf="@+id/imageBtnProfile"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMainMenu"
+        app:srcCompat="@drawable/icons8_information_64" />
+
+    <ImageButton
+        android:id="@+id/imageBtnLocation"
+        android:layout_width="139dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/ICON"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBtnScan"
+        app:layout_constraintEnd_toStartOf="@+id/imageBtnScan"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageBtnProfile"
+        app:layout_constraintTop_toBottomOf="@+id/imageBtnProfile"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/icons8_user_location_64" />
+
+    <ImageButton
+        android:id="@+id/imageBtnScan"
+        android:layout_width="141dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/ICON"
+        app:layout_constraintEnd_toEndOf="@+id/imageBtnInfo"
+        app:layout_constraintTop_toBottomOf="@+id/imageBtnInfo"
+        app:srcCompat="@drawable/icons8_qr_code_64" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="188dp"
+        android:background="?android:attr/listDivider"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewMainMenu"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="146dp"
+        android:layout_marginRight="146dp"
+        android:layout_marginBottom="25dp"
+        android:background="#03FF9E80"
+        android:gravity="center"
+        android:text="Home"
+        android:textColor="@color/textcolour"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

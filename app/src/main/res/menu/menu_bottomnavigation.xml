@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/scanMenuId"
+        android:title="@string/scan"
+        android:icon="@drawable/ic_qr_code"/>
+
+    <item android:id="@+id/recentScannedMenuId"
+        android:title="@string/checkin"
+        android:icon="@drawable/ic_history_blue_24dp"/>
+
+    <item android:id="@+id/favouritesMenuId"
+        android:title="@string/checkout"
+        android:icon="@drawable/ic_star_border_white_24dp"/>
+</menu>
