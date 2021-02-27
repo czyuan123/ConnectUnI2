@@ -1,15 +1,16 @@
-package com.example.connectuni
+package com.example.connectuni.location
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.connectuni.R
 
-class RedNotificationActivity : DialogFragment() {
+class YellowNotificationActivity : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         getDialog()!!.getWindow()?.setBackgroundDrawableResource(R.drawable.round_corner);
-        return inflater.inflate(R.layout.red_notification, container, false)
+        return inflater.inflate(R.layout.yellow_notification, container, false)
     }
 
     override fun onStart() {

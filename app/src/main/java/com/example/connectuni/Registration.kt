@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlin.collections.HashMap
-import kotlin.String as String
 
 
 class Registration : AppCompatActivity() {
@@ -55,68 +53,49 @@ class Registration : AppCompatActivity() {
             }
         }
 
-    private fun registerNewuser(){
+    private fun registerNewuser() {
         val FirstName = registerFirstName.text.toString().trim()
         val HomeAddress = registerHomeAddress.text.toString().trim()
         val LastName = registerLastName.text.toString().trim()
         val EmailAddress = registerEmailAddress.text.toString().trim()
 
-        if(FirstName.isEmpty()){
+        if (FirstName.isEmpty()) {
             registerFirstName.error = "Kindly enter your full name"
             return//stop execution using return
         }
-        if(HomeAddress.isEmpty()){
+        if (HomeAddress.isEmpty()) {
             registerHomeAddress.error = "Kindly enter your home address"
             return//stop execution using return
         }
-        if(LastName.isEmpty()){
+        if (LastName.isEmpty()) {
             registerLastName.error = "Kindly enter your phone number"
             return//stop execution using return
         }
-        if(EmailAddress.isEmpty()){
+        if (EmailAddress.isEmpty()) {
             registerEmailAddress.error = "Kindly enter your email address"
             return//stop execution using return
         }
         //firestore database
         val docRef: DocumentReference =
             Database.collection("Users").document(userID)
-        val user: MutableMap<String,Any> = HashMap()
+        val user: MutableMap<String, Any> = HashMap()
         user["First Name"] = FirstName
         user["Last Name"] = LastName
         user["Home Address"] = HomeAddress
         user["Email Address"] = EmailAddress
 
         //add new user detail to database
-        docRef.collection("Data").document("Profile").set(user).addOnSuccessListener{docRef->
-            Log.d("new user","onSuccess: User Profile Created : $userID")
-            Toast.makeText(applicationContext, "New user's info saved successfully", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this@Registration, MainActivity::class.java))
-            }.addOnFailureListener { e->
-            Log.d("new user","Error creating new user",e)
+        docRef.collection("Data").document("Profile").set(user).addOnSuccessListener { docRef ->
+            Log.d("new user", "onSuccess: User Profile Created : $userID")
+            Toast.makeText(
+                applicationContext,
+                "New user's info saved successfully",
+                Toast.LENGTH_LONG
+            ).show()
+            startActivity(Intent(this@Registration, MainActivity::class.java))
+        }.addOnFailureListener { e ->
+            Log.d("new user", "Error creating new user", e)
         }
-        }
-        // realtime database
-       /* //create database reference object
-        dataRef = FirebaseDatabase.getInstance().getReference("new users")
-        //everytime a newuser register, a unique key generated inside the reference
-        val userID = dataRef.push().key
-        val newuser = UserData(userID.toString(),FirstName, HomeAddress, LastName, EmailAddress)
-
-        //To store userID inside the unique key that is generated
-        // To check whether storing the value is completed .addOnCompleteListener
-            dataRef.child(userID.toString()).setValue(newuser).addOnCompleteListener(this) {task->
-                if(task.isSuccessful){
-                    startActivity(Intent(this, MainActivity::class.java))
-                    Toast.makeText(
-                        applicationContext,
-                        "New user's info saved successfully",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-            }*/
-
-    }
-
+    }}
 
 

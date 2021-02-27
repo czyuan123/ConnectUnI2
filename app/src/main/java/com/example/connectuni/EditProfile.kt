@@ -1,10 +1,12 @@
 package com.example.connectuni
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.*
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -70,7 +72,7 @@ class EditProfile : AppCompatActivity() {
         user["Email Address"] = EmailAddress
         docRef.update(user).addOnSuccessListener {docRef->
             Log.d("update user","DocumentSnapshot successfully updated")
-            Toast.makeText(applicationContext,"Update successdully",Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,"Update successfully",Toast.LENGTH_SHORT).show()
             startActivity(Intent(this@EditProfile, Profile::class.java))
         }.addOnFailureListener {e->
             Log.e("update user","Error updating document",e)

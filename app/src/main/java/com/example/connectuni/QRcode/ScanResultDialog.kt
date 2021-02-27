@@ -1,10 +1,11 @@
-package com.example.connectuni
+package com.example.connectuni.QRcode
 
 import android.app.Dialog
 import android.content.Context
 import android.icu.util.Calendar
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.connectuni.R
 import com.google.zxing.Result
 import kotlinx.android.synthetic.main.scanresult.*
 import java.text.DateFormat
@@ -34,25 +35,6 @@ class ScanResultDialog(var context: Context){
         dialog.scannedText.text = result.text
         dialog.scannedDate.text = DateFormat.getDateTimeInstance().format(calendar.time)
         dialog.show()
-
-       /* auth = FirebaseAuth.getInstance()
-        Database = FirebaseFirestore.getInstance()
-
-        val id = Database.collection("Users").document(auth.currentUser!!.uid)
-            .collection("QRcode").document().id
-        val dataRef: DocumentReference =
-            Database.collection("Users").document(auth.currentUser!!.uid).collection("QRcode").document(id)
-            dataRef.get().addOnSuccessListener { documentSnapshot ->
-            //check whether document exists
-            if (documentSnapshot != null) {
-                //assign the data to the variable
-                dialog.scannedText.text  = documentSnapshot.getString("Check In Location")
-                dialog.scannedDate.text = documentSnapshot.getString("Date and Time")
-                dialog.show()
-            } else {
-                Log.d("tag", "Scanned Data Not Exist")
-            }
-        }*/
 
     }
 

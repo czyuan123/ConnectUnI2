@@ -23,4 +23,9 @@
         <!--Title and Messages Color-->
         <item name="android:textColorPrimary">@color/cardview_light_background</item>
     </style>
+
+    <style name="ToolbarWhite">
+        <item name="android:textColorPrimary">@color/colorNull</item>
+    </style>
+
 </resources>

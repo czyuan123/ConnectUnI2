@@ -31,5 +31,14 @@
         <item>Female</item>
     </string-array>
 
+    <string name="notification_title">Duration estimation</string>
+    <string name="notification_subtitle">Check Out Reminder!</string>
+
+    <string name="notification_schedule_title">Schedule notification:\u00a0</string>
+    <string name="notification_schedule_pattern">dd.MM.yy \u00B7 HH:mm</string>
+    <string name="notification_schedule_error">
+        Schedule notification: Incorrect Date and Time
+    </string>
+
 
 </resources>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/selectstate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Malaysia Covid-19 Updates"
+        android:textColor="#FF5252"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/metricselection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectstate">
+
+        <RadioButton
+            android:id="@+id/radioButtonActiveCases"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Active Cases" />
+
+        <RadioButton
+            android:id="@+id/radioButtonPositiveCases"
+            android:layout_width="89dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total Cases" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDeceased"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Deceased" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonrecovered"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Recovered" />
+    </RadioGroup>
+
+    <com.robinhood.spark.SparkView
+        android:id="@+id/sparkview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#37F4B7B7"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/selecttime"
+        app:layout_constraintTop_toBottomOf="@+id/metricselection" />
+
+    <RadioGroup
+        android:id="@+id/selecttime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="#37F4B7B7"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tickerview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Week"
+            android:textColor="@color/colourtitle" />
+
+        <RadioButton
+            android:id="@+id/month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Month"
+            android:textColor="@color/colourtitle" />
+
+        <RadioButton
+            android:id="@+id/max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max"
+            android:textColor="@color/colourtitle" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/datelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tickerview"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/datelabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

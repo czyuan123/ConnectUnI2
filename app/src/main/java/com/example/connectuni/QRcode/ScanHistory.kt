@@ -1,4 +1,4 @@
-package com.example.connectuni
+package com.example.connectuni.QRcode
 
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.connectuni.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -98,10 +99,11 @@ class ScanHistory : Fragment() {
                             "Successfully retrieve favourite scan history result" + document.getData()
                         )
                         //obtain data from firestore and store in class resultData
-                        val checkOutResult = resultData(
-                            document.data["Date and Time"].toString(),
-                            document.data["Check In Location"].toString()
-                        )
+                        val checkOutResult =
+                            resultData(
+                                document.data["Date and Time"].toString(),
+                                document.data["Check In Location"].toString()
+                            )
                         resultList.add(checkOutResult)
                     }
                     //initialise recycler view layout
@@ -111,7 +113,10 @@ class ScanHistory : Fragment() {
 
                     // show data
                     val adapter =
-                        ScannedResultListAdapter(resultList as ArrayList<resultData>, context)
+                        ScannedResultListAdapter(
+                            resultList as ArrayList<resultData>,
+                            context
+                        )
                     mRecyclerView.adapter = adapter
                     adapter.notifyDataSetChanged()
                 } else {
@@ -135,10 +140,11 @@ class ScanHistory : Fragment() {
                     for (document in snapshot) {
                         Log.d(TAG, "Successfully retrieve scan history result" + document.getData())
                         //obtain data from firestore and store in class resultData
-                        val checkinResult = resultData(
-                            document.data["Date and Time"].toString(),
-                            document.data["Check In Location"].toString()
-                        )
+                        val checkinResult =
+                            resultData(
+                                document.data["Date and Time"].toString(),
+                                document.data["Check In Location"].toString()
+                            )
                         resultList.add(checkinResult)
                     }
                     //initialise recycler view layout
@@ -148,7 +154,10 @@ class ScanHistory : Fragment() {
 
                     // show data
                     val adapter =
-                        ScannedResultListAdapter(resultList as ArrayList<resultData>, context)
+                        ScannedResultListAdapter(
+                            resultList as ArrayList<resultData>,
+                            context
+                        )
                     mRecyclerView.adapter = adapter
                     adapter.notifyDataSetChanged()
                 } else {
@@ -167,7 +176,9 @@ class ScanHistory : Fragment() {
     // to clear scan result list in the recycler view
     private fun onClicks() {
         mView.layoutHeader.removeAll.setOnClickListener {
-            AlertDialog.Builder(context!!, R.style.CustomAlertDialog)
+            AlertDialog.Builder(context!!,
+                R.style.CustomAlertDialog
+            )
                 .setTitle(getString(R.string.clear_all))
                 .setMessage(getString(R.string.clear_all_result))
                 .setPositiveButton(getString(R.string.clear)) { _, _ ->

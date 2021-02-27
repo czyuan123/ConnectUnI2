@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
             android:drawableRight="@drawable/ic_baseline_person_24"
-            android:hint="Full Name" />
+            android:hint="First Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -124,7 +124,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TVregisterLastName"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_baseline_person_outline_24"
             android:hint="Last Name" />
     </com.google.android.material.textfield.TextInputLayout>

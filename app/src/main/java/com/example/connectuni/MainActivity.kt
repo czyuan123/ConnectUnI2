@@ -8,6 +8,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.connectuni.CovidUpdate.MalaysiaCovidUpdate
+import com.example.connectuni.QRcode.Splash
+import com.example.connectuni.location.MapActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.content_main.*
@@ -48,6 +51,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val GPSintent = Intent(this, MapActivity::class.java)
             startActivity(GPSintent)
         }
+        //Get covid-19 update
+        imageBtnInfo.setOnClickListener{
+            val infointent = Intent(this, MalaysiaCovidUpdate::class.java)
+            startActivity(infointent)
+        }
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

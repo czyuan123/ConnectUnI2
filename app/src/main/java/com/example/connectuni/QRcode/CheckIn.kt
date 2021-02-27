@@ -1,6 +1,5 @@
-package com.example.connectuni
+package com.example.connectuni.QRcode
 
-import android.content.ContentValues
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Build
@@ -12,6 +11,9 @@ import android.widget.LinearLayout
 import android.widget.ListView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.connectuni.CustomAdapter
+import com.example.connectuni.DependantData
+import com.example.connectuni.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -31,7 +33,7 @@ class CheckIn : AppCompatActivity() {
     private var dependantList: ArrayList<DependantData>? = null
     private lateinit var listView: ListView
     private lateinit var adapter: CustomAdapter
-
+    val Checked = arrayListOf<String>()
     private lateinit var calendar: Calendar
     private lateinit var view: View
 
@@ -43,7 +45,30 @@ class CheckIn : AppCompatActivity() {
         Database = FirebaseFirestore.getInstance()
         mAuth = FirebaseAuth.getInstance()
         listView = findViewById<View>(R.id.listView) as ListView
+        //checkCheckInResult()
         addDependantData()
+        button.setOnClickListener {
+            calendar = Calendar.getInstance()
+            val dependantcheckin: MutableMap<String, Any> = HashMap()
+            dependantcheckin["Date and Time"] = DateFormat.getDateTimeInstance().format(calendar.time)
+            dependantcheckin["DependantName"] = Checked
+
+            Database.collection("Users")
+                .document(mAuth.currentUser!!.uid).collection("CheckIn")
+                .document("Dependant").collection("Dependant checked-in")
+                .add(dependantcheckin).addOnSuccessListener {
+                    Log.d("Dependant", " $Checked successfully checked-in! ")
+                    val intent =
+                        Intent(this@CheckIn, WorkManagerNotificationActivity::class.java)
+                    intent.putExtra("Fragment", "Fragment A")
+                    startActivity(intent)
+
+                }.addOnFailureListener { e ->
+                    Log.e("Location visited", "Failed to check-in")
+                }
+
+        }
+
         bottomSheetBehavior = BottomSheetBehavior.from(bottomsheet)
         bottomSheetBehavior.setBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
@@ -55,38 +80,18 @@ class CheckIn : AppCompatActivity() {
                         val checkList: DependantData =
                             dependantList!![position]
                         checkList.checked = !checkList.checked
+                        Checked.add(checkList.fullName)
                         adapter.notifyDataSetChanged()
-                        val checked = ArrayList<String>()
-                        for(i in 0  until dependantList!!.size) {
-                            if (checkList.checked) {
-                                checked.add(checkList.fullName)
-                            }
-                        }
-                        button.setOnClickListener {
-                            calendar = Calendar.getInstance()
-                            val dependantcheckin: MutableMap<String, Any> = HashMap()
-                            dependantcheckin["Dependants"] = checked.toString()
-                            dependantcheckin["Date and Time"] =
-                                DateFormat.getDateTimeInstance().format(calendar.time)
-
-                            val docRef = Database.collection("Users")
-                                .document(mAuth.currentUser!!.uid).collection("CheckIn")
-                                .document("Dependant").collection("Dependant checked-in")
-                            docRef.add(dependantcheckin).addOnSuccessListener {
-                                Log.d(
-                                    "Dependant",
-                                    " $checked successfully checked-in! "
-                                )
-                                val intent =
-                                    Intent(this@CheckIn, MainScan::class.java)
-                                intent.putExtra("Fragment", "Fragment A")
-                                startActivity(intent)
-
-                            }.addOnFailureListener { e ->
-                                Log.e("Location visited", "Failed to check-in")
-                            }
-
-                        }
+                            /*checkBox.setOnCheckedChangeListener { compoundButton: CompoundButton, isChecked: Boolean ->
+                                for (i in 0 until dependantList!!.size) {
+                                    if (isChecked) {
+                                        Checked.add(checkList.fullName)
+                                        adapter.notifyDataSetChanged()
+                                    } else {
+                                        Checked.removeAt(position)
+                                    }
+                                }
+                            }*/
 
                     }
             }
@@ -102,7 +107,7 @@ class CheckIn : AppCompatActivity() {
         checkOut.visibility = View.VISIBLE
         checkIn.setOnClickListener {
 
-            val intent = Intent(this, MainScan::class.java)
+            val intent = Intent(this, WorkManagerNotificationActivity::class.java)
             intent.putExtra("Fragment", "Fragment A")
             startActivity(intent)
         }
@@ -128,13 +133,15 @@ class CheckIn : AppCompatActivity() {
                     dependantList!!.add(data)
                 }
 
-                adapter = CustomAdapter(dependantList!!, applicationContext)
+                adapter = CustomAdapter(
+                    dependantList!!,
+                    applicationContext
+                )
                 listView.adapter = adapter
-
             }
     }
 
-    private fun checkCheckInResult() {
+    /*private fun checkCheckInResult() {
         Database.collection("Users").document(mAuth.currentUser!!.uid).collection("CheckIn")
             //.orderBy("Date and Time", Query.Direction.DESCENDING).limit(10)
             .addSnapshotListener { snapshot, e ->
@@ -143,28 +150,28 @@ class CheckIn : AppCompatActivity() {
                     return@addSnapshotListener
                 }
                 if (snapshot != null) {
-                    val intent = Intent(this,CheckOut::class.java)
-                    startActivity(intent)
+                    checkIn.visibility = View.INVISIBLE
 
-                }else {
-                    checkIn.visibility = View.VISIBLE
+                } else {
+                    checkOut.visibility = View.INVISIBLE
+                }
+
+                Database.collection("Users").document(mAuth.currentUser!!.uid)
+                    .collection("CheckOut")
+                    //.orderBy("Date and Time", Query.Direction.DESCENDING).limit(10)
+                    .addSnapshotListener { snapshot, e ->
+                        if (e != null) {
+                            Log.w(ContentValues.TAG, "Listen failed.", e)
+                            return@addSnapshotListener
+                        }
+                        if (snapshot != null) {
+                            checkOut.visibility = View.INVISIBLE
+
+                        } else {
+                            checkIn.visibility = View.INVISIBLE
+                        }
                     }
             }
-       Database.collection("Users").document(mAuth.currentUser!!.uid).collection("CheckOut")
-            //.orderBy("Date and Time", Query.Direction.DESCENDING).limit(10)
-            .addSnapshotListener { snapshot, e ->
-                if (e != null) {
-                    Log.w(ContentValues.TAG, "Listen failed.", e)
-                    return@addSnapshotListener
-                }
-                if (snapshot != null) {
-                    checkIn.visibility = View.VISIBLE
-
-                }else {
-                    checkOut.visibility = View.VISIBLE
-                }
-            }
-    }
-
+    }*/
 
 }

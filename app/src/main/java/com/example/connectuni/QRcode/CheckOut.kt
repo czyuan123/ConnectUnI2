@@ -1,4 +1,4 @@
-package com.example.connectuni
+package com.example.connectuni.QRcode
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.connectuni.R
 import kotlinx.android.synthetic.main.activity_code_scanner.*
 
 class CheckOut : AppCompatActivity(){
@@ -34,10 +35,12 @@ class CheckOut : AppCompatActivity(){
     private fun checkCameraPermission()
     {
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED){
-            startActivity(Intent(this,MainScan::class.java))
+            startActivity(Intent(this, MainScan::class.java))
             finish()
         }else{
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), CAMERA_PERMISSION_REQUEST_CODE)
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA),
+                CAMERA_PERMISSION_REQUEST_CODE
+            )
         }
     }
     //create a dialog
@@ -46,7 +49,7 @@ class CheckOut : AppCompatActivity(){
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == CAMERA_PERMISSION_REQUEST_CODE){
             if(grantResults.isNotEmpty() && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                startActivity(Intent(this,MainScan::class.java))
+                startActivity(Intent(this, MainScan::class.java))
                 finish()
             }else if(isPermissionDenied()) {
 
@@ -58,7 +61,9 @@ class CheckOut : AppCompatActivity(){
                         finish()
                     }.show()
             }else{
-                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), CAMERA_PERMISSION_REQUEST_CODE)
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA),
+                    CAMERA_PERMISSION_REQUEST_CODE
+                )
             }
         }
     }

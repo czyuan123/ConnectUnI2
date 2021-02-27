@@ -1,4 +1,4 @@
-package com.example.connectuni
+package com.example.connectuni.location
 
 import android.graphics.Color
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
+import com.example.connectuni.R
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

@@ -1,4 +1,4 @@
-package com.example.connectuni
+package com.example.connectuni.QRcode
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -24,7 +24,7 @@ class Splash : AppCompatActivity() {
     private fun checkCameraPermission()
     {
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED){
-            startActivity(Intent(this,CheckIn::class.java))
+            startActivity(Intent(this, CheckIn::class.java))
             finish()
         }else{
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA),
@@ -38,7 +38,8 @@ class Splash : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == CheckIn.CAMERA_PERMISSION_REQUEST_CODE){
             if(grantResults.isNotEmpty() && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                startActivity(Intent(this,MainScan::class.java))
+                startActivity(Intent(this,
+                    MainScan::class.java))
                 finish()
             }else if(isPermissionDenied()) {
 

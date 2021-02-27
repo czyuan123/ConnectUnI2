@@ -23,14 +23,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MelakaActivity"/>
-        <activity android:name=".SelangorActivity" />
-        <activity android:name=".MainScan" />
-        <activity android:name=".CheckIn"
+        <activity android:name=".QRcode.WorkManagerNotificationActivity"
+                android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".location.MelakaActivity"/>
+        <activity android:name=".location.SelangorActivity" />
+        <activity android:name=".QRcode.MainScan" />
+        <activity android:name=".QRcode.CheckIn"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Splash"/>
-        <activity android:name=".CheckOut" />
+        <activity android:name=".QRcode.Splash"/>
+        <activity android:name=".QRcode.CheckOut" />
+        <activity android:name=".CovidUpdate.MalaysiaCovidUpdate"
+            android:launchMode="singleTop"/>
 
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -44,7 +52,7 @@
         -->
         <activity android:name=".EditProfile" />
         <activity
-            android:name=".MapActivity"
+            android:name=".location.MapActivity"
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".Profile"

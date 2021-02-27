@@ -13,5 +13,7 @@
     <color name="COlourtitle">#FF6E40</color>
     <color name="translucent">#C4E7D5D3</color>
     <color name="red">#FF0000</color>
-    <color name="yellow">#FFFF00</color>
+    <color name="yellow">#EEFF41</color>
+    <color name="colorNull">#fafafa</color>
+    <color name="recover">#FF00C853</color>
 </resources>

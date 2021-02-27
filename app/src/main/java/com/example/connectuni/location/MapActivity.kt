@@ -1,4 +1,4 @@
-package com.example.connectuni
+package com.example.connectuni.location
 
 import android.Manifest
 import android.content.Context
@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import com.example.connectuni.R
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -256,7 +257,8 @@ class MapActivity : FragmentActivity(), OnMapReadyCallback {
                                         )
                                     )
                                     Timer().schedule(2000) {
-                                        YellowNotificationActivity().show(
+                                        YellowNotificationActivity()
+                                            .show(
                                             supportFragmentManager,
                                             "MyCustomFragment"
                                         )
@@ -279,7 +281,8 @@ class MapActivity : FragmentActivity(), OnMapReadyCallback {
                                         )
                                     )
                                     Timer().schedule(2000) {
-                                        RedNotificationActivity().show(
+                                        RedNotificationActivity()
+                                            .show(
                                             supportFragmentManager,
                                             "MyCustomFragment"
                                         )
